@@ -7,9 +7,12 @@
    <link rel="stylesheet" href="reset.css">
    <link rel="stylesheet" href="main.css">
 </head>
+
+<button id="goTopBtn" title="Go to top">↑ Top</button>
+
 <body>
    <header>
-      <h1>ANGREN.net</h1>
+      <h1><a href="index.html">ANGREN.net</a></h1>
       <nav>
          <div class="nav-container">
             <ul>
@@ -19,19 +22,18 @@
                <li><a href="outdoor.html">Outdoor</a></li>
                <li><a href="contact.html">Contact</a></li>
             </ul>
-            <form class="search-form">
-               <input type="text" placeholder="Search">
-               <button type="submit">Go</button>
-            </form>
+            <div class="search-bar">
+               <input type="text" id="searchInput" placeholder="Search for a product..." />
+               <button onclick="searchProduct()">Search</button>
+            </div>
+            
          </div>
-      </nav>
       </nav>
    </header>
 
 
    <main>
       <h2>Outdoor</h2>
-
       <section class="picture-grid">
          
          <div class="grid-item">
@@ -92,9 +94,79 @@
 
       </section>
 
+      <script>
+         function searchProduct() {
+            const input = document.getElementById("searchInput").value.toLowerCase().trim();
+      
+            const productMap = {
+               // Gadgets
+               "oversetter": "https://www.arngren.net/oversetter.html",
+               "translator": "https://www.arngren.net/oversetter.html",
+               "led": "https://www.arngren.net/cree-led.html",
+               "flashlight": "https://www.arngren.net/cree-led.html",
+               "g-tech": "https://www.arngren.net/akselerasjon.html",
+               "acceleration": "https://www.arngren.net/akselerasjon.html",
+               "compass": "https://www.arngren.net/kompass.html",
+               "clock": "https://www.arngren.net/kompass.html",
+               "traser": "https://www.arngren.net/H3.html",
+               "watch": "https://www.arngren.net/H3.html",
+               "robosapien": "https://www.arngren.net/robosapien.html",
+               "robot arm": "https://www.arngren.net/robotarm.html",
+               "adapter": "https://www.arngren.net/adapter.html?1386634934232",
+               "battery": "https://www.arngren.net/adapter.html?1386634934232",
+      
+               // Vehicles
+               "scooter": "https://www.arngren.net/el-scooter-b.html",
+               "city bosch": "https://www.arngren.net/el-scooter-b.html",
+               "moped car": "https://www.arngren.net/elmoped-bil-300.html",
+               "cabeasyr": "https://www.arngren.net/elmoped-bil-300.html",
+               "titan": "https://www.arngren.net/elmoped-bil.html",
+               "2-seater": "https://www.arngren.net/elmoped-bil.html",
+               "atv gasoline": "https://www.arngren.net/atv-bensin.html",
+               "electric atv": "https://www.arngren.net/atv.html",
+               "golf car": "https://www.arngren.net/atv.html",
+               "ev 4k": "https://www.arngren.net/elbil-liten.html",
+               "go kart": "https://www.arngren.net/elektrisk-atv-1.html",
+               "atv for children": "https://www.arngren.net/elektrisk-atv-1.html",
+      
+               // Outdoor
+               "lawnmower": "https://www.arngren.net/gressklipper.html",
+               "hoverpod": "https://www.arngren.net/hoverpod.html",
+               "weather vane": "https://www.arngren.net/verhane.html",
+               "solar": "https://www.arngren.net/solceller.html",
+               "electric bike": "https://www.arngren.net/sykkel.html",
+               "lenox": "https://www.arngren.net/sykkel.html",
+               "1000w scooter": "https://www.arngren.net/elscooter.html",
+               "air jack": "https://www.arngren.net/luft-jekk.html",
+               "telescope": "https://www.arngren.net/teleskop.html",
+               "binoculars": "https://www.arngren.net/teleskop.html"
+            };
+      
+            for (let keyword in productMap) {
+               if (input.includes(keyword)) {
+                  window.location.href = productMap[keyword];
+                  return;
+               }
+            }
+      
+            alert("No matching product found.");
+         }
+      </script>
+
+      <script>
+         // Show button when user scrolls down
+         window.onscroll = function() {
+            const btn = document.getElementById("goTopBtn");
+            btn.style.display = document.documentElement.scrollTop > 200 ? "block" : "none";
+         };
+      
+         // Scroll to top on click
+         document.getElementById("goTopBtn").onclick = function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+         };
+      </script>
+      
    </main>
-
-
 
 <footer><p>&copy; 2025 ANGREN.net</p></footer>
 
